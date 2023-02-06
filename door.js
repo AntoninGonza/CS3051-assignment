@@ -1,31 +1,25 @@
 let code = "";
-let key = "7914";
+const key = "7914";
+const d = document.getElementById("door");
+const bt = document.querySelectorALL("button");
 
 function press(val){
-    code +=`${val}`;
-    for (let i = 0; i < code.length; i++){
-        if(code[i]!= key[i]){
-            code = `${val}`;
-            break;
-        }
-    }
-    door(code ==key);
+const x = val.textContent;
+
+if(code.length < 4){
+    code += x;
+}
+if(code.length == 4 & code == key){
+    d.src = "opened.JPG";
+    setTimeout(close, 5000);
+}
+if(code.length == 4 & code != key){
+    code="";
+}
 }
 
-
-function door(open){
-    let d = document.querySelector("#door");
-    let bt = document.querySelectorALL("button");
-    if(open){
-        d.src = "opened.JPG";
-        for (let i = 0; i < bt.length; i++){
-            bt[i].style.backgroundColor = '#7F7';
-        }
-        setTimeout(()=>{door(false)}, 5 * 1000);
-    } else {
-        d.src = "closed.JPG";
-        for(let i = 0; i < bt.length; i++){
-            bt[i].style.backgroundColor = '';
-        }
-    }
+function close(){
+    d.src = "closed.JPG";
+    code="";
 }
+
