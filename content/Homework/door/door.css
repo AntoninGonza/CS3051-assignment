@@ -1,0 +1,12 @@
+img{
+    width:300px
+}
+
+body{
+    align-content: center;
+    justify-content: center;
+}
+buttons{
+    margin-top: 150px;
+    flex-basis: 150px;
+}
