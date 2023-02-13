@@ -1,4 +1,4 @@
-let content = document.getElementById('content');
+let content = document.getElementById('doc');
 let radios = document.getElementsByName('number');
 let checkedradio = radios[0];
 let textbox = document.createElement('input');
@@ -14,16 +14,16 @@ label.htmlFor ='tbox';
 let enterbutt = document.createElement('button');
 enterbutt.textContent="Enter";
 enterbutt.id = "ebutt";
-enterbutt.className="content_elem";
+enterbutt.className="content";
 enterbutt.onclick= generateoutput;
 let output= document.getElementById("output");
 let inputs = document.createElement('div');
-inputs.className="content_elem";
+inputs.className="content";
 let s_value_ans="";
 let required=0;
 textbox.addEventListener("keydown",keygenerateoutput);
 
-
+//create the function to generate when a radio button is checked
 function generatebox(){
 
     for(let index = 0; index < radios.length; index++){
@@ -34,6 +34,8 @@ function generatebox(){
     if(currentradio!== checkedradio){
     output.innerHTML="";
     textbox.value = "";
+
+    //limits numbers of characters 
     if(checkedradio.id=="SSN"){
         required=9;
         textbox.maxLength =required;
@@ -46,14 +48,18 @@ function generatebox(){
         required=10;
         textbox.maxLength =required;
     }
-    
+
+    //check current label
     for(let index = 0; index < labels.length; index++){
         if(labels[index].htmlFor==checkedradio.value){
            label.textContent= labels[index].textContent+": "
         }
     }
+    //avoid that if you click on the same button multiple times it will generate multiple times
     inputs.innerHTML="";
     currentradio= checkedradio;
+
+    //add to the body
     inputs.appendChild(label);
     inputs.appendChild(textbox);
 
@@ -62,18 +68,22 @@ function generatebox(){
     
 }
 }
+//function to create the alerts on the website
 function generateoutput(){
     textval=textbox.value;
+    //not enough numbers alert
     if(textval.length<required){
         alert("not enough numbers")
     }
     else{
+                //if there are letters it will not be accepted
                 if(isNaN(Number(textval))){
             alert("it contains letter");
         }
         else{
 
     output.innerHTML="";
+    //outputs with the correct writting 
     if(checkedradio.id=="SSN"){
         s_value_ans= textval.substring(0,3)+"-"+textval.substring(3,5)+"-"+textval.substring(5);    
     }
@@ -83,6 +93,7 @@ function generateoutput(){
     if(checkedradio.id=="USphone"){
         s_value_ans= "("+ textval.substring(0,3)+")-"+textval.substring(3,7)+"-"+textval.substring(7);
     }
+
 
     let outputlabel= document.createElement('p');
     let outputcontent=document.createElement('p');
