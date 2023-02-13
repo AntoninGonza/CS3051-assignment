@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+</head>
+
+<body>
+    <p>Enter your information?</p><br>
+    <div class="content_elem" id="radios">
+    <div class = "radio">
+    <input type ="radio" id = "Usphone" name = "choice" value = "Uspn" onclick="generatebox()">
+    <label for="Usphone"> US phone number</label> <br>
+    </div>
+
+    <div class = "radio">
+    <input type ="radio" id = "Frphone" name = "choice" value = "Frpn" onclick="generatebox()">
+    <label for="Frphone"> French phone number</label> <br>
+    </div>
+
+    <div class = "radio">
+    <input type ="radio" id = "SSN" name = "choice" value = "SocSN" onclick="generatebox()">
+    <label for="SSN"> Social Security Number</label> <br>
+    </div>
+    </div>
+    
+    <div id="output"></div>
+
+    <script src = "form.js"></script>
+</body>
+</html>
