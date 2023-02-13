@@ -4,31 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forms</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
-
 <body>
-    <p>Enter your information?</p><br>
-        <div class = "" id= "doc">
+    <p>Enter your information....</p>
+    <div class="" id="doc">
             <div class="content" id="radios">
             <div class = "radio">
-            <input type ="radio" id = "Usphone" name = "choice" value = "Uspn" onclick="generatebox()">
-            <label for="Usphone"> US phone number</label> <br>
+            <input type="radio" name="number" id="US" value="us_pn" onclick="generatebox()">
+            <label for="us_pn">US phone number</label>
             </div>
 
-            <div class = "radio">
-            <input type ="radio" id = "Frphone" name = "choice" value = "Frpn" onclick="generatebox()">
-         <label for="Frphone"> French phone number</label> <br>
-         </div>
-
-         <div class = "radio">
-         <input type ="radio" id = "SSN" name = "choice" value = "SocSN" onclick="generatebox()">
-         <label for="SSN"> Social Security Number</label> <br>
-         </div>
+            <div class="radio">
+            <input type="radio" name="number" id="FR" value="fr_pn" onclick="generatebox()">
+            <label for="fr_pn">French phone number</label>
             </div>
-        </div>  
+
+            <div class="radio">
+            <input type="radio" name="number" id="SSN" value="ss_n" onclick="generatebox()">
+            <label for="ss_n">Social security number</label>
+            </div>
+            </div>
+    </div>
+    
     <div id="output"></div>
-
-    <script src = "form.js"></script>
+    <script src="form.js"></script>
 </body>
 </html>
