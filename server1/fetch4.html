@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button id='b2a' onclick="pressedHTMsnippet()">about me</button>
+    <button id='b2b' onclick="pressedHTMsnippet1()">what I like</button>
+    <button id='b2c' onclick="pressedHTMsnippet2()">sites I like</button>
+    <button id='b2d' onclick="pressedHTMsnippet3()">where I've lived</button>
+    <div id='response'></div>
+    
+    <script>
+
+
+function pressedHTMsnippet(event) {
+        fetch("/me")
+          .then(function (response) { return response.text(); }) // we are expecting a text response
+          .then(function (data) {
+            document.querySelector('#response').innerHTML = data;
+          });
+      }
+
+      function pressedHTMsnippet1(event) {
+        fetch("/like")
+          .then(function (response) { return response.text(); }) // we are expecting a text response
+          .then(function (data) {
+            document.querySelector('#response').innerHTML = data;
+          });
+      }
+
+      function pressedHTMsnippet2(event) {
+        fetch("/site")
+          .then(function (response) { return response.text(); }) // we are expecting a text response
+          .then(function (data) {
+            document.querySelector('#response').innerHTML = data;
+          });
+      }
+
+      function pressedHTMsnippet3(event) {
+        fetch("/lived")
+          .then(function (response) { return response.text(); }) // we are expecting a text response
+          .then(function (data) {
+            document.querySelector('#response').innerHTML = data;
+          });
+      }
+
+    </script>
+    
+
+</body>
+</html>
