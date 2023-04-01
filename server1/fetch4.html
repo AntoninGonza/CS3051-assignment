@@ -1,56 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <title>About Antonin Gonzalez</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
-    <button id='b2a' onclick="pressedHTMsnippet()">about me</button>
-    <button id='b2b' onclick="pressedHTMsnippet1()">what I like</button>
-    <button id='b2c' onclick="pressedHTMsnippet2()">sites I like</button>
-    <button id='b2d' onclick="pressedHTMsnippet3()">where I've lived</button>
-    <div id='response'></div>
-    
-    <script>
+    <div id="container">
+        <div id="header">
+            <h1>Antonin Gonzalez</h1>
+        </div>
 
+        <div id="menu">
+            <ul>
+                <li id="me">Home</li>
+                <li id="like">What I like</li>
+                <li id="site">Favorite sites</li>
+                <li id="lived">Where I've lived</li>
+            </ul>
+        </div>
 
-function pressedHTMsnippet(event) {
-        fetch("/me")
-          .then(function (response) { return response.text(); }) // we are expecting a text response
-          .then(function (data) {
-            document.querySelector('#response').innerHTML = data;
-          });
-      }
+        <div id="content">
+        </div>
 
-      function pressedHTMsnippet1(event) {
-        fetch("/like")
-          .then(function (response) { return response.text(); }) // we are expecting a text response
-          .then(function (data) {
-            document.querySelector('#response').innerHTML = data;
-          });
-      }
+        <div id="footer">
+            Copyright &copy; 2023 Antonin Gonzalez
+        </div>
 
-      function pressedHTMsnippet2(event) {
-        fetch("/site")
-          .then(function (response) { return response.text(); }) // we are expecting a text response
-          .then(function (data) {
-            document.querySelector('#response').innerHTML = data;
-          });
-      }
+        <script>
+            const listItems = document.querySelectorAll("#menu li");
+            for (i=0; i<listItems.length; i++) {
+                listItems[i].addEventListener("click", select);
+            }
+            getContent("me");
 
-      function pressedHTMsnippet3(event) {
-        fetch("/lived")
-          .then(function (response) { return response.text(); }) // we are expecting a text response
-          .then(function (data) {
-            document.querySelector('#response').innerHTML = data;
-          });
-      }
+            function select(event) {
+                const item = event.target;
+                getContent(event.target.id);
+            }
 
-    </script>
-    
+            function getContent(page) {
+                fetch(page+".html")
+                    .then(response => response.text()) // we are expecting a text response
+                    .then(data => {
+                        document.querySelector('#content').innerHTML = data;
+                        setMenuItem(page);
+                    });
+            }
 
+            function setMenuItem(selectedItem) {
+                for (i=0; i<listItems.length; i++) {
+                    if (listItems[i].id == selectedItem) {
+                        listItems[i].classList.add("item-selected");
+                    } else {
+                        listItems[i].classList.remove("item-selected");
+                    }
+                }
+            }
+
+        </script>
 </body>
+
 </html>
