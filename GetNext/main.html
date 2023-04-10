@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>next</title>
+</head>
+<body>
+    <h1>Word List</h1>
+    <button id="previous" onclick="previous()">Previous</button>
+    <button id="next" onclick="next()">Next</button>
+    <ul id="word-list"></ul>
+
+<script>
+    let words =document.getElementById("word-list");
+    function next(){
+        words.innerHTML="";
+        fetch("/next")
+        .then((response) => response.json())
+        .then((data)=>{
+            
+            for(let i = 0; i < data.length; i++){
+                let x = document.createElement("li");
+                x.textContent=data[i];
+                words.appendChild(x);
+            }
+        })
+    }
+
+    function previous(){
+        words.innerHTML="";
+        fetch("/previous")
+        .then((response) => response.json())
+        .then((data)=>{
+            
+            for(let i = 0; i < data.length; i++){
+                let x = document.createElement("li");
+                x.textContent=data[i];
+                words.appendChild(x);
+            }
+            
+        })
+    }
+</script>
+</body>
+</html>
